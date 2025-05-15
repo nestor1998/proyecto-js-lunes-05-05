@@ -1,9 +1,11 @@
 const students = [];
 
 const tableBody=document.querySelector("#studentsTable tbody")
+const averageDiv=document.getElementById("average");
 
 document.getElementById("studentForm").addEventListener("submit",function(e){
     e.preventDefault();
+
 
 
     const name = document.getElementById("name").value.trim();
@@ -25,10 +27,10 @@ document.getElementById("studentForm").addEventListener("submit",function(e){
     students.push(student);
 
     addStudentToTable(student)
+    
+    calcularPromedio()
 
-    
     this.reset();
-    
     
 });
 
@@ -41,6 +43,25 @@ function addStudentToTable(student){
     <td>${student.date} </td>`
     ;
     tableBody.appendChild(row);
+}
+
+// - -- - - - -- --  - - --  -- -- - - -- -- -- - -- - - -- -- -  - -- - - -- -- - -- - ---- 
+
+function calcularPromedio(){
+    notas = []
+    if (students.length ===0){
+        averageDiv.textContent="Promedio de Calificaciones: No Disponible"
+        return;
+    }
+    
+    for (let alumno of students){
+        notas.push(parseFloat   (alumno.grade))
+    }
+    
+    const suma = notas.reduce((acumulador, valorActual) => acumulador + valorActual,0);
+
+    let promedio = suma/students.length
+    averageDiv.textContent=`Promedio de Calificaciones: ${promedio.toFixed(2)} Total estudiantes:`
 }
 
 

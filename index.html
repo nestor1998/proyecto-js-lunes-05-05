@@ -1,39 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
-    <h2>Notas Asignatura Front-End</h2>
+    <h2>Seguimiento de Calificaciones de Estudiantes</h2>
+    
+
+    <div id="average">Promedio de Calificaciones: No Disponible</div>
+
     <form id="studentForm">
         <div>
             <label for="name">Nombre : </label>
-            <input type="text" id="name" required>
+            <input type="text" id="name" required oninvalid="this.setCustomValidity('Por favor, Complete el campo \'Nombre\'')" oninput="this.setCustomValidity(''); this.checkValidity();">
+  
         </div>
         <div>
             <label for="lastname">Apellido : </label>
-            <input type="text" id="lastname" required>
+            <input type="text" id="lastname" required   oninvalid="this.setCustomValidity('Por favor, Complete el campo \'Apellido\'')"  oninput="this.setCustomValidity(''); this.checkValidity();">
         </div>
         <div>
-            <label for="grade">Nota (1.0 - 7.0)</label>
-            <input type="number" id="grade" step="0.1" min="1" max="7" required>
+            <label for="grade">Calificación (1.0 - 7.0)</label>
+            <input type="number" id="grade" step="0.1" min="1" max="7" required oninvalid="this.setCustomValidity('Por favor, Complete el campo \'Calificación\'')"  oninput="this.setCustomValidity(''); this.checkValidity();">
         </div>
         <div>
             <label for="date">Fecha : </label>
-            <input type="date" id="date" required>
+            <input type="date" id="date" required oninvalid="this.setCustomValidity('Por favor, Complete el campo \'Fecha\'')"  oninput="this.setCustomValidity(''); this.checkValidity();">
         </div>
-        <button type="submit">Guardar Estudiante</button>
-
+        <div>
+            <button   type="submit">Agregar Estudiante</button>
+        </div>
+    
     </form>
 
-    <table id="studentsTable"  border="1" cellpadding="8" cellspacing="0">
+    <table id="studentsTable"  >
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Nota</th>
+                <th>Calificación</th>
                 <th>Fecha</th>
             </tr>
         </thead>
