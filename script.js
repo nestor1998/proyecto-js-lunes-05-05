@@ -94,9 +94,16 @@ function calcularPromedio() {
         return;
     }
 
+
+
     const suma = students.reduce((acc, alumno) => acc + parseFloat(alumno.grade), 0);
     const promedio = suma / students.length;
-    averageDiv.textContent = `Promedio de Calificaciones: ${promedio.toFixed(2)} | Total estudiantes: ${students.length}`;
+
+    const totalAprobados = students.filter(a => parseFloat(a.grade) >= 4).length;
+    const totalReprobados = students.filter(a => parseFloat(a.grade) < 4).length;
+
+
+    averageDiv.textContent = `Promedio de Calificaciones: ${promedio.toFixed(2)} | Total estudiantes: ${students.length}   Aprobados: ${totalAprobados} |  Reprobados: ${totalReprobados}`;
 }
 
 function actualizarTabla() {
